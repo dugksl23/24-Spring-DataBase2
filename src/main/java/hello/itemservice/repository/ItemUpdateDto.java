@@ -1,5 +1,6 @@
 package hello.itemservice.repository;
 
+import hello.itemservice.domain.Item;
 import lombok.Data;
 
 @Data
@@ -16,4 +17,5 @@ public class ItemUpdateDto {
         this.price = price;
         this.quantity = quantity;
     }
+
 }

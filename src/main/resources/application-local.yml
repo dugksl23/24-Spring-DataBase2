@@ -2,3 +2,23 @@ spring:
   profiles: local
   application:
     name: itemService
+
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+logging:
+  level:
+    org:
+      springframework:
+        jdbc: debug
+
+
+datasource:
+  url: jdbc:h2:tcp://localhost/~/test
+  username: sa
+
+
+batchSize: 1000
