@@ -51,8 +51,6 @@ dependencies {
 	//JdbcTemplate 추가
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
-
-
 }
 
 tasks.named('test') {
@@ -64,9 +62,6 @@ tasks.named('test') {
 	useJUnitPlatform()
 	jvmArgs '-Xshare:off' // JVM 아규먼트 설정
 }
-
-//// JPA Binding parameter 값 로그 확인 설정
-//compileJava { options.compilerArgs << '-parameters' }
 
 // querydsl 세팅 시작
 //def querydslDir = "$buildDir/generated/querydsl"
