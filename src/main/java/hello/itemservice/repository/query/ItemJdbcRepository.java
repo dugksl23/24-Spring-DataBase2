@@ -45,7 +45,10 @@ public class ItemJdbcRepository {
     }
 
     private int batchInsert(int batchSize, int batchCount, List<Item> subItems) {
-        jdbcTemplate.batchUpdate("INSERT INTO ITEM (`ITEM_NAME`, `PRICE`, `QUANTITY`) VALUES (?, ?, ?)", new BatchPreparedStatementSetter() {
+
+        String sql ="insert into item (item_name, price, quantity) values (?,?,?)";
+
+        jdbcTemplate.batchUpdate(sql, new BatchPreparedStatementSetter() {
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
                 ps.setString(1, subItems.get(i).getItemName());
@@ -58,6 +61,7 @@ public class ItemJdbcRepository {
                 return subItems.size();
             }
         });
+
         subItems.clear();
         batchCount++;
         return batchCount;
