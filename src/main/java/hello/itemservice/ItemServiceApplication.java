@@ -1,20 +1,16 @@
 package hello.itemservice;
 
-import hello.itemservice.config.*;
+import hello.itemservice.config.MemoryConfig;
 import hello.itemservice.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-
-import javax.sql.DataSource;
 
 
-//@Import(MemoryConfig.class)
+@Import(MemoryConfig.class)
 @SpringBootApplication
 //        (scanBasePackages = "hello.itemservice.web")
 @Slf4j
@@ -25,7 +21,7 @@ public class ItemServiceApplication {
     }
 
     @Bean
-    @Profile("local")
+    @Profile("test")
     public TestDataInit testDataInit(ItemRepository itemRepository) {
         return new TestDataInit(itemRepository);
     }

@@ -16,4 +16,6 @@ public interface ItemRepository {
 
     List<Item> findAll(ItemSearchCond cond);
 
+    public List<Item> findItemsWithCond(ItemSearchCond itemSearch);
+
 }
