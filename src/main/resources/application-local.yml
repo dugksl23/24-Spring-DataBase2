@@ -3,22 +3,45 @@ spring:
   application:
     name: itemService
 
+  messages:
+    basename: messages, errors
+
   datasource:
     url: jdbc:h2:mem:test
     username: sa
     password:
     driver-class-name: org.h2.Driver
+#    p6spy:
+#      enable-logging: true
+#      multiline: true
+#      logging: slf4j
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.H2Dialect
+      ddl-auto: create
+      #      none : db를 변경하지 않고 계속 사용하는 설정.
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 1000 #최적화 옵션 // 글로벌 로딩 전략
+                                      # 100 개 단위로 끊어서 가지고 오겠다는 뜻.
+        highlight_sql: true
+        use_sql_comments: true
+    open-in-view: false
+
+
 
 logging:
   level:
     org:
       springframework:
         jdbc: debug
-
-
-datasource:
-  url: jdbc:h2:tcp://localhost/~/test
-  username: sa
-
+      hibernate:
+        SQL: DEBUG
+        jdbc:
+          bind:
+            TRACE
 
 batchSize: 1000

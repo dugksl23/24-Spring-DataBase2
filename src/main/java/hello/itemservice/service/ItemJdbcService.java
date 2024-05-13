@@ -2,9 +2,9 @@ package hello.itemservice.service;
 
 
 import hello.itemservice.domain.Item;
-import hello.itemservice.repository.ItemJpaRepository;
-import hello.itemservice.repository.query.ItemJdbcDto;
-import hello.itemservice.repository.query.ItemJdbcRepository;
+import hello.itemservice.repository.jpa.ItemJpaRepository;
+import hello.itemservice.repository.jdbcTemplate.ItemJdbcDto;
+import hello.itemservice.repository.jdbcTemplate.ItemJdbcRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

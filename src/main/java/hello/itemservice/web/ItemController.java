@@ -4,6 +4,7 @@ import hello.itemservice.domain.Item;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
 import hello.itemservice.service.ItemService;
+import hello.itemservice.service.ItemServiceV1;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemController {
 
-    private final ItemService itemService;
+    private final ItemServiceV1 itemService;
 
     @GetMapping
     public String items(@ModelAttribute("itemSearch") ItemSearchCond itemSearch, Model model) {

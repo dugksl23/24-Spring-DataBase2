@@ -1,7 +1,7 @@
 package hello.itemservice.service;
 
 import hello.itemservice.repository.ItemSearchCond;
-import hello.itemservice.repository.query.ItemJdbcDto;
+import hello.itemservice.repository.jdbcTemplate.ItemJdbcDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

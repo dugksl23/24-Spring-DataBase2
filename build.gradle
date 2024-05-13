@@ -14,7 +14,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -50,6 +50,7 @@ dependencies {
 
 	//JdbcTemplate 추가
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation group: 'com.github.gavlyukovskiy', name: 'p6spy-spring-boot-starter', version: '1.9.1'
 
 }
 
@@ -62,6 +63,10 @@ tasks.named('test') {
 	useJUnitPlatform()
 	jvmArgs '-Xshare:off' // JVM 아규먼트 설정
 }
+
+
+// JPA Binding parameter 값 로그 확인 설정
+compileJava { options.compilerArgs << '-parameters' }
 
 // querydsl 세팅 시작
 //def querydslDir = "$buildDir/generated/querydsl"
