@@ -5,6 +5,7 @@ import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +15,14 @@ import java.util.Optional;
 @Repository
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class SpringDataJpaRepository implements ItemRepository {
 
     private final ItemJpaRepository itemJpaRepository;
 
     @Override
     public Item save(Item item) {
+        log.info("jpa repository");
         return itemJpaRepository.save(item);
     }
 

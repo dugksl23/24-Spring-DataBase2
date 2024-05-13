@@ -33,7 +33,6 @@ public class ItemServiceV1 implements ItemService {
 
     @Override
     public Optional<Item> findById(Long id) {
-//        return itemRepository.findById(id);
         return itemRepository.findById(id);
     }
 
