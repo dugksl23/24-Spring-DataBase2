@@ -58,11 +58,6 @@ public class MemoryItemRepository implements ItemRepository {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public List<Item> findItemsWithCond(ItemSearchCond itemSearch) {
-        return List.of();
-    }
-
     public void clearStore() {
         store.clear();
     }

@@ -61,10 +61,4 @@ public class ItemController {
         return "redirect:/items/{itemId}";
     }
 
-    @GetMapping("/condition")
-    public String findItemsWithCond(@ModelAttribute("itemSearch") ItemSearchCond itemSearch, Model model){
-        List<Item> items = itemService.findItemsWithCond(itemSearch);
-        model.addAttribute("items", items);
-        return "items";
-    }
 }
