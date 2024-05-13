@@ -46,5 +46,7 @@ public class ItemServiceV1 implements ItemService {
         return itemJpaRepository.findAll();
     }
 
-
+    public List<Item> findItemsWithCond(ItemSearchCond itemSearch) {
+        return itemJpaRepository.findItems(itemSearch.getItemName(), itemSearch.getMaxPrice());
+    }
 }

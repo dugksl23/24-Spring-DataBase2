@@ -3,6 +3,7 @@ package hello.itemservice.web;
 import hello.itemservice.domain.Item;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
+import hello.itemservice.repository.jpa.ItemJpaRepository;
 import hello.itemservice.service.ItemService;
 import hello.itemservice.service.ItemServiceV1;
 import lombok.RequiredArgsConstructor;
@@ -60,4 +61,10 @@ public class ItemController {
         return "redirect:/items/{itemId}";
     }
 
+    @GetMapping("/condition")
+    public String findItemsWithCond(@ModelAttribute("itemSearch") ItemSearchCond itemSearch, Model model){
+        List<Item> items = itemService.findItemsWithCond(itemSearch);
+        model.addAttribute("items", items);
+        return "items";
+    }
 }
