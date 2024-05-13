@@ -1,6 +1,5 @@
 package hello.itemservice.service;
 
-import hello.itemservice.repository.ItemJpaRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.query.ItemJdbcDto;
 import org.assertj.core.api.Assertions;
@@ -16,22 +15,20 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
+@Commit
 @SpringBootTest
 class ItemJdbcServiceTest {
 
     @Autowired
     private ItemJdbcService itemJdbcService;
 
-    @Autowired
-    private ItemJpaRepository itemJpaRepository;
-
     @Value("${batchSize}")
     int batchSize;
 
     @Test
     @DisplayName("JDBC Bulk Insert Test")
-    @Rollback(false)
-    @Transactional
+    @Rollback(value = false)
     @Commit
     void bulkInsert() {
 
