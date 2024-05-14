@@ -1,5 +1,6 @@
 package hello.itemservice;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import hello.itemservice.config.MemoryConfig;
 import hello.itemservice.repository.ItemRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -9,8 +10,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 
+import javax.persistence.EntityManager;
 
-@Import(MemoryConfig.class)
+
+//@Import(MemoryConfig.class)
 @SpringBootApplication
 //        (scanBasePackages = "hello.itemservice.web")
 @Slf4j
@@ -26,6 +29,11 @@ public class ItemServiceApplication {
         return new TestDataInit(itemRepository);
     }
 
+
+    @Bean
+    public JPAQueryFactory jpaQueryFactory(EntityManager em) {
+        return new JPAQueryFactory(em);
+    }
 //    @Bean
 //    @Profile("test")
 //    public DataSource dataSource(){

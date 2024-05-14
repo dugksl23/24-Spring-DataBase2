@@ -7,6 +7,9 @@ import hello.itemservice.domain.QItem;
 import hello.itemservice.repository.ItemRepository;
 import hello.itemservice.repository.ItemSearchCond;
 import hello.itemservice.repository.ItemUpdateDto;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -20,15 +23,11 @@ import static hello.itemservice.domain.QItem.item;
 
 @Repository
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class SpringQueryDslRepository implements ItemRepository {
 
     private final EntityManager em;
     private final JPAQueryFactory query;
-
-    public SpringQueryDslRepository(EntityManager entityManager) {
-        this.em = entityManager;
-        this.query = new JPAQueryFactory(em);
-    }
 
     @Transactional
     @Override
@@ -64,6 +63,8 @@ public class SpringQueryDslRepository implements ItemRepository {
                 .select(item)
                 .from(item)
                 .where(likeItemName(itemName), lessThanEqualPrice(maxPrice))
+                // or 절
+//                .where(likeItemName(itemName).or(lessThanEqualPrice(maxPrice)))
                 .fetch();
 
         return fetch;
